@@ -1,9 +1,17 @@
 import * as React from "react";
 import{Link, IndexLink} from 'react-router';
 const Nav = () => {
-  return <div className="top-bar">
+  const style = {
+    backgroundColor: '#333333'
+  };
+
+  const menuText = {
+    color: 'white'
+  };
+  return <div style={style} className="top-bar">
     <div className="top-bar-left">
-      <ul className="menu">
+      <ul style={style} className="menu">
+        <li style={menuText}>React Time App</li>
         <li>
           <IndexLink to="/" activeClassName="active-link" activeStyle={{fontWeight: 'bold'}}>Timer</IndexLink>
         </li>
@@ -14,8 +22,8 @@ const Nav = () => {
       </ul>
     </div>
     <div className="top-bar-right">
-      <ul className="menu">
-        <li>Created By Preet</li>
+      <ul style={style} className="menu">
+        <li style={menuText}>Created By Preet</li>
       </ul>
     </div>
   </div>;
