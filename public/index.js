@@ -5,6 +5,8 @@ import {Route, Router, IndexRoute, hashHistory} from 'react-router';
 import Main from './components/main';
 
 import css from 'style!css!foundation-sites/dist/css/foundation.css';
+import Countdown from "./components/countdown";
+import Timer from "./components/timer";
 $(document).foundation();
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
@@ -12,6 +14,9 @@ const createStoreWithMiddleware = applyMiddleware()(createStore);
 ReactDOM.render(
   <Router history={hashHistory}>
     <Route path="/" component={Main}>
+      <IndexRoute component={Countdown}/>
+      <Route path="countdown" component={Countdown}/>
+      <Route path="timer" component={Timer}/>
     </Route>
   </Router>
   , document.querySelector('.container'));
