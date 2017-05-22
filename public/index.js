@@ -4,7 +4,8 @@ import {createStore, applyMiddleware} from 'redux';
 import {Route, Router, IndexRoute, hashHistory} from 'react-router';
 import Main from './components/main';
 
-import css from 'style!css!foundation-sites/dist/css/foundation.css';
+import 'style-loader!css-loader!foundation-sites/dist/css/foundation.css';
+import './styles/less/demo.less';
 import Countdown from "./components/countdown";
 import Timer from "./components/timer";
 $(document).foundation();
@@ -19,5 +20,6 @@ ReactDOM.render(
       <Route path="timer" component={Timer}/>
     </Route>
   </Router>
-  , document.querySelector('.container'));
+  , document.querySelector('.container')
+);
 

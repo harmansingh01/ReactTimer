@@ -1,15 +1,15 @@
-let webpack=require('webpack');
+var webpack = require('webpack');
 
-module.exports={
+module.exports = {
     entry: [
-       'script!jquery/dist/jquery.js',
-        'script!foundation-sites/dist/js/foundation.js',
+       'script-loader!jquery/dist/jquery.js',
+        'script-loader!foundation-sites/dist/js/foundation.js',
         './public/index.js'
     ],
-    externals:{
+    externals: {
       jquery:'jQuery'
     },
-    plugins:[
+    plugins: [
       new webpack.ProvidePlugin({
         '$':'jquery',
         'jQuery':'jquery'
@@ -21,20 +21,28 @@ module.exports={
         filename: 'bundle.js'
     },
     module: {
-        loaders: [{
-            exclude: /(node_modules|bower_components)/,
-            loader: 'babel',
-            query: {
-                presets: ['react', 'es2015', 'stage-1']
+        loaders: [
+            {
+                exclude: /(node_modules|bower_components)/,
+                loader: 'babel-loader',
+                query: {
+                    presets: ['react', 'es2015', 'stage-1']
+                }
+            },
+            {
+                test: /\.less$/,
+                include: /public\/styles/,
+                // exclude: /node_modules/,
+                loader: 'style-loader!css-loader!less-loader'
             }
-        }]
+        ]
     },
-   devtool:'cheap-module-eval-source-map',
+    devtool:'cheap-module-eval-source-map',
     resolve: {
-        extensions: ['', '.js', '.jsx']
+        extensions: ['.js', '.jsx']
     },
     devServer: {
-    historyApiFallback: true,
+        historyApiFallback: true,
         contentBase: './'
-}
+    }
 };
